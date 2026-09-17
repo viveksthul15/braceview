@@ -1,0 +1,15 @@
+name: Feature request
+description: A new file type, view or shortcut you'd like
+labels: [enhancement]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: What are you trying to do?
+      placeholder: "I open large .jsonl logs from my agent runs and want to…"
+    validations:
+      required: true
+  - type: textarea
+    id: idea
+    attributes:
+      label: What would help?

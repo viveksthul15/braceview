@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy policy — Braceview</title>
+<link rel="icon" href="assets/icon-128.png">
+<style>
+  :root { --ink: #0b1b24; --ink-2: #3b4a5a; --line: #e2e8f0; --bg: #fff; --accent: #0e7490; --font: "Segoe UI Variable Text", "Segoe UI", -apple-system, system-ui, sans-serif; }
+  @media (prefers-color-scheme: dark) { :root { --ink: #e6edf3; --ink-2: #b6c2cf; --line: #22303a; --bg: #0b141a; --accent: #2dd4bf; } }
+  body { margin: 0; font-family: var(--font); color: var(--ink); background: var(--bg); line-height: 1.7; }
+  main { width: min(760px, 100% - 40px); margin: 0 auto; padding: 48px 0 80px; }
+  a { color: var(--accent); }
+  .back { display: inline-flex; align-items: center; gap: 10px; font-weight: 700; text-decoration: none; color: var(--ink); }
+  .back img { width: 28px; border-radius: 7px; }
+  h1 { font-size: 40px; letter-spacing: -0.03em; margin: 36px 0 4px; }
+  h2 { font-size: 22px; margin: 36px 0 8px; letter-spacing: -0.01em; }
+  p, li { color: var(--ink-2); }
+  .date { color: var(--ink-2); font-size: 15px; }
+  table { border-collapse: collapse; width: 100%; margin-top: 12px; font-size: 15px; }
+  td, th { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
+</style>
+</head>
+<body>
+<main>
+  <a class="back" href="index.html"><img src="assets/icon-128.png" alt="">Braceview</a>
+  <h1>Privacy policy</h1>
+  <p class="date">Last updated: 17 September 2026 · Applies to the Braceview desktop app (Windows, macOS, Microsoft Store) and the Braceview browser extension.</p>
+
+  <h2>The short version</h2>
+  <p>Braceview does not collect, store, sell or share any personal data. It has no accounts, no analytics and no telemetry, and it never uploads the files or pages you view.</p>
+
+  <h2>Desktop app</h2>
+  <ul>
+    <li><b>Files you open</b> are read from your disk and displayed on your device. Their contents are not sent anywhere.</li>
+    <li><b>Stored on your device only:</b> your settings (theme, zoom, view preferences), the list of recently opened files, and the tabs to reopen at startup. You can clear the recent list from the app.</li>
+    <li><b>Network:</b> the app makes no requests of its own. If a Markdown document you open contains links to images on the internet, those images are loaded from their websites, as they would be in a browser. Clicking a link opens it in your default browser.</li>
+    <li>The app does not check for updates in the background.</li>
+  </ul>
+
+  <h2>Browser extension</h2>
+  <table>
+    <tr><th>Permission</th><th>Why it's needed</th></tr>
+    <tr><td>Read and change data on websites</td><td>To check whether the page you're viewing is a JSON, CSV or Markdown document and, if so, show it in the viewer. On other pages it only looks for JSON inside code blocks when you hover them. Page content is processed inside your browser and never transmitted.</td></tr>
+    <tr><td>Storage</td><td>To save your extension settings (which file types to open, theme, sites where it's turned off) and view preferences. If you're signed in to your browser with sync on, your browser may sync these settings between your devices.</td></tr>
+    <tr><td>Scripting</td><td>To load the viewer only into pages that need it, which keeps other pages fast.</td></tr>
+    <tr><td>Clipboard (write)</td><td>To copy values, paths or rows when you click a copy button. The extension never reads your clipboard.</td></tr>
+  </table>
+  <p>The extension does not collect browsing history, form data, credentials, location, or any other personal or sensitive information, and uses no remote code.</p>
+
+  <h2>Children</h2>
+  <p>Braceview is a general-purpose tool and does not knowingly collect information from anyone, including children.</p>
+
+  <h2>Changes</h2>
+  <p>If this policy changes, the updated version will be published on this page with a new date.</p>
+
+  <h2>Contact</h2>
+  <p>Questions about privacy? <a href="https://github.com/viveksthul15/braceview/issues">Open an issue on GitHub</a>.</p>
+</main>
+</body>
+</html>

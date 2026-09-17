@@ -1,0 +1,39 @@
+name: Bug report
+description: Something doesn't work or looks wrong
+labels: [bug]
+body:
+  - type: dropdown
+    id: product
+    attributes:
+      label: Where did it happen?
+      options:
+        - Windows app
+        - Mac app
+        - Chrome / Edge extension
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Braceview version
+      description: Command palette (Ctrl/Cmd+K) → About, or the extension's settings page
+      placeholder: "1.2.0"
+    validations:
+      required: true
+  - type: dropdown
+    id: filetype
+    attributes:
+      label: File type
+      options: [JSON, CSV, Markdown, Not file-specific]
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened, and what did you expect?
+      placeholder: Steps to reproduce help a lot. If a file triggers it, a small sample (with private data removed) is ideal.
+    validations:
+      required: true
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: Screenshots
+      description: Optional
