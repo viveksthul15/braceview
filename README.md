@@ -53,7 +53,7 @@ Get them from the [latest release](https://github.com/viveksthul15/braceview/rel
 
 ![JSON tree with a JSONPath query](docs/assets/screen-json.png)
 
-**CSV** — a table that stays smooth with hundreds of thousands of rows. Sort, search and filter; column statistics with a distribution chart; export what you see as JSON, Markdown or CSV. Detects delimiters, header rows and decimal commas; opens old Excel exports with the right characters.
+**CSV** — a table that sorts a million rows in a quarter of a second. Sort, search and filter; column statistics with a distribution chart; export what you see as JSON, Markdown or CSV. Detects delimiters, header rows and decimal commas; opens old Excel exports with the right characters.
 
 ![CSV table with column statistics](docs/assets/screen-csv.png)
 
@@ -62,6 +62,20 @@ Get them from the [latest release](https://github.com/viveksthul15/braceview/rel
 **In the browser** — API responses open as a searchable tree, raw GitHub `.md` and `.csv` files render instantly, and JSON inside documentation pages gets a **View as tree** button.
 
 **Everywhere** — tabs, command palette (`Ctrl/Cmd+K`), light and dark themes, auto-reload when a file changes, keyboard shortcuts for everything.
+
+## Speed
+
+Measured on an everyday Ryzen 5 laptop. Full method and results: [BENCHMARKS.md](BENCHMARKS.md).
+
+![Sorting 1,000,000 CSV rows: 70.7 s in 1.2.0, 0.25 s in 1.2.1](docs/assets/speed-race.png)
+
+| | |
+| --- | --- |
+| Sort a million CSV rows (55 MB) | **0.25 s**, 285× faster than 1.2.0 |
+| Column statistics on a million rows | **0.35 s** |
+| Double-click to a 20 MB JSON tree | **1.8 s**, including app start |
+| CPU while it sits open | **~0%** |
+| Extension code on pages that aren't JSON, CSV or Markdown | **4.7 KB** |
 
 ## Privacy
 

@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Braceview — JSON, CSV and Markdown viewer for Windows, Mac and Chrome</title>
-<meta name="description" content="A fast, free and private viewer for JSON, CSV and Markdown files. Tree and JSONPath for JSON, sortable tables with column statistics for CSV, diagrams and math for Markdown.">
+<meta name="description" content="A fast, free and private viewer for JSON, CSV and Markdown files. Tree and JSONPath for JSON, a table that sorts a million CSV rows in 0.25 s, diagrams and math for Markdown.">
 <link rel="icon" href="assets/icon-128.png">
 <link rel="canonical" href="https://viveksthul15.github.io/braceview/">
 <meta property="og:type" content="website">
@@ -31,7 +31,7 @@
   html { scroll-behavior: smooth; }
   body { margin: 0; font-family: var(--font); color: var(--ink); background: var(--bg); -webkit-font-smoothing: antialiased; line-height: 1.6; }
   a { color: var(--accent); }
-  img { max-width: 100%; display: block; }
+  img { max-width: 100%; height: auto; display: block; }
   .wrap { width: min(1160px, 100% - 40px); margin: 0 auto; }
 
   .nav { position: sticky; top: 0; z-index: 10; backdrop-filter: saturate(1.4) blur(12px); background: color-mix(in srgb, var(--bg) 82%, transparent); border-bottom: 1px solid var(--line); }
@@ -96,6 +96,21 @@
   details p, details ol { color: var(--ink-2); margin: 12px 0 0; }
   code { font-family: var(--mono); font-size: .9em; background: var(--soft); padding: 2px 6px; border-radius: 6px; }
 
+  .speed { display: grid; grid-template-columns: 5fr 6fr; gap: 48px; align-items: center; margin-top: 40px; }
+  @media (max-width: 900px) { .speed { grid-template-columns: 1fr; } }
+  .stats { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .stat { border: 1px solid var(--line); border-radius: 16px; padding: 20px 22px; background: var(--bg); }
+  .stat.hot { background: var(--brand); border-color: transparent; color: #fff; }
+  .stat b { display: block; font-size: clamp(34px, 4.4vw, 48px); line-height: 1; letter-spacing: -0.04em; font-weight: 800; }
+  .stat b small { font-size: .45em; letter-spacing: 0; margin-left: 4px; font-weight: 700; }
+  .stat span { display: block; margin-top: 10px; font-size: 15px; color: var(--ink-2); }
+  .stat.hot span { color: rgba(255, 255, 255, .92); }
+  .receipt-list { font-family: var(--mono); font-size: 14px; margin-top: 22px; border-top: 2px dashed var(--line); }
+  .receipt-list div { display: flex; gap: 10px; padding: 9px 0; border-bottom: 2px dashed var(--line); color: var(--ink-2); }
+  .receipt-list div i { flex: 1; border-bottom: 2px dotted var(--line); transform: translateY(-6px); }
+  .receipt-list div b { color: var(--ink); white-space: nowrap; }
+  .fine { color: var(--muted); font-size: 14px; margin-top: 14px; }
+
   footer { border-top: 1px solid var(--line); padding: 40px 0 60px; color: var(--muted); font-size: 14px; }
   footer .wrap { display: flex; flex-wrap: wrap; gap: 20px; align-items: center; justify-content: space-between; }
   footer a { color: var(--ink-2); }
@@ -108,6 +123,7 @@
     <a class="brand" href="#"><img src="assets/icon-128.png" alt="">Braceview</a>
     <nav>
       <a href="#features">Features</a>
+      <a href="#speed">Speed</a>
       <a href="#download">Download</a>
       <a href="#faq">FAQ</a>
       <a href="privacy.html">Privacy</a>
@@ -156,9 +172,9 @@
     <div class="wrap feature flip">
       <div class="copy">
         <div class="kicker">CSV</div>
-        <h2>200,000 rows without the wait</h2>
+        <h2>A million rows without the wait</h2>
         <ul>
-          <li><span><b>Sort, search and filter</b> without changing the file</span></li>
+          <li><span><b>Sort a million rows in 0.25 s</b>, search and filter without changing the file</span></li>
           <li><span><b>Column statistics</b>: empty values, unique counts, min, max, mean and a distribution chart</span></li>
           <li><span><b>Detects</b> commas, semicolons, tabs, headers and European decimal commas</span></li>
           <li><span><b>Export</b> the rows you see as JSON, Markdown or CSV</span></li>
@@ -200,6 +216,31 @@
     </div>
   </section>
 
+  <section class="block" id="speed">
+    <div class="wrap">
+      <div class="kicker">Speed</div>
+      <h2>Numbers, not adjectives</h2>
+      <p class="lead">Measured on an everyday Ryzen 5 laptop, not a workstation. Version 1.2.1 sorts a million-row CSV <b>285× faster</b> than 1.2.0.</p>
+      <div class="speed">
+        <div>
+          <div class="stats">
+            <div class="stat hot"><b>0.25<small>s</small></b><span>to sort a million CSV rows</span></div>
+            <div class="stat"><b>1.8<small>s</small></b><span>from double-click to a 20 MB JSON tree</span></div>
+            <div class="stat"><b>~0<small>%</small></b><span>CPU while it sits open</span></div>
+            <div class="stat"><b>4.7<small>KB</small></b><span>is all the extension runs on other web pages</span></div>
+          </div>
+          <div class="receipt-list">
+            <div><span>Column statistics, 1M rows</span><i></i><b>0.35 s</b></div>
+            <div><span>Search a 20 MB JSON file</span><i></i><b>0.43 s</b></div>
+            <div><span>Open a 600-section Markdown report</span><i></i><b>2.1 s</b></div>
+          </div>
+          <p class="fine">Method, machine and every number: <a href="https://github.com/viveksthul15/braceview/blob/main/BENCHMARKS.md">benchmarks</a>.</p>
+        </div>
+        <div class="frame"><img src="assets/speed-race.png" alt="Sorting 1,000,000 CSV rows: Braceview 1.2.0 took 70.7 seconds, 1.2.1 takes 0.25 seconds" loading="lazy" width="1200" height="630"></div>
+      </div>
+    </div>
+  </section>
+
   <section class="block">
     <div class="wrap">
       <div class="kicker">Private by design</div>
@@ -207,7 +248,7 @@
       <div class="grid3">
         <div class="card"><h3>No uploads</h3><p>Files are read and rendered locally. Braceview has no server to send them to.</p></div>
         <div class="card"><h3>No account, no tracking</h3><p>No sign-up, no analytics, no telemetry. Settings stay on your device.</p></div>
-        <div class="card"><h3>Opens in a click</h3><p>Double-click a file in Explorer or Finder, or drop it on the window. Tabs keep everything together.</p></div>
+        <div class="card"><h3>Opens in a click</h3><p>Double-click a file in Explorer or Finder, or drop it on the window. It starts in under a second and keeps everything in tabs.</p></div>
       </div>
     </div>
   </section>

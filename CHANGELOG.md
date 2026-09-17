@@ -2,6 +2,18 @@
 
 All notable changes to Braceview are documented here. Versions follow semantic versioning.
 
+## [1.2.1] — 2026-09-17
+
+A speed release. Full numbers, method and machine are in [BENCHMARKS.md](https://github.com/viveksthul15/braceview/blob/main/BENCHMARKS.md).
+
+### Changed
+
+- **CSV sorting is up to 285× faster.** Sorting a million rows by a text column takes 0.25 s instead of 70.7 s; number and date columns take under a second.
+- **Column statistics are up to 24× faster** on large files and are reused when you only change the sort order.
+- **Long Markdown documents open 41% faster and use about a third less memory**; the browser skips layout for sections you haven't scrolled to yet, and the split editor opens 3× faster.
+- **Less code to load before the first file appears.** Code-editor syntax grammars now load only when a code block needs them, in the desktop app and the extension.
+- The Chrome extension loads its viewer directly and no longer needs the `scripting` permission.
+
 ## [1.2.0] — 2026-09-17
 
 ### Added
