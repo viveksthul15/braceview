@@ -67,11 +67,11 @@ Get them from the [latest release](https://github.com/viveksthul15/braceview/rel
 
 Measured on an everyday Ryzen 5 laptop. Full method and results: [BENCHMARKS.md](BENCHMARKS.md).
 
-![Sorting 1,000,000 CSV rows: 70.7 s in 1.2.0, 0.25 s in 1.2.1](docs/assets/speed-race.png)
+![A blink takes about 0.30 s; Braceview sorts 1,000,000 CSV rows in 0.25 s](docs/assets/speed-race.png)
 
 | | |
 | --- | --- |
-| Sort a million CSV rows (55 MB) | **0.25 s**, 285× faster than 1.2.0 |
+| Sort a million CSV rows (55 MB) | **0.25 s** — faster than a blink |
 | Column statistics on a million rows | **0.35 s** |
 | Double-click to a 20 MB JSON tree | **1.8 s**, including app start |
 | CPU while it sits open | **~0%** |

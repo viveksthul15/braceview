@@ -5,27 +5,6 @@ How long Braceview takes on real-world-sized files, measured on an ordinary lapt
 Measured 2026-09-17 on AMD Ryzen 5 7530U with Radeon Graphics, 15 GB RAM, Windows 11. Desktop: packaged 1.2.1 app, 5 cold starts per scenario, medians. Extension: Chromium 152.0.7977.78 (Electron 44.4.1), 5 runs per page, medians.
 
 
-## What 1.2.1 changed
-
-| Action | 1.2.0 | 1.2.1 | Change |
-| --- | --- | --- | --- |
-| Sort 1M CSV rows by text | 70.69 s | 248 ms | **285× faster** |
-| Sort 200k CSV rows by text | 15.40 s | 127 ms | **122× faster** |
-| Sort 1M CSV rows by number | 4.29 s | 398 ms | **11× faster** |
-| Column statistics, 1M rows | 8.38 s | 347 ms | **24× faster** |
-| Column statistics, 200k rows | 947 ms | 87 ms | **11× faster** |
-| Search + filter 1M rows | 1.01 s | 379 ms | **3× faster** |
-| Open 0.5 MB Markdown (600 sections) | 3.63 s | 2.14 s | 41% faster |
-| Open the split editor on it | 650 ms | 218 ms | **3× faster** |
-| Launch (no file) | 976 ms | 840 ms | 14% faster |
-| Open 20 MB JSON | 1.89 s | 1.76 s | 7% faster |
-| Open 1M-row CSV | 2.68 s | 2.39 s | 11% faster |
-| Extension: small JSON response | 668 ms | 451 ms | 33% faster |
-| Extension: CSV, 480 rows | 661 ms | 497 ms | 25% faster |
-| Extension: 600-section Markdown | 3.41 s | 1.98 s | 42% faster |
-
-Memory with the 600-section Markdown document open: desktop 454 MB → 293 MB, extension tab 356 MB → 198 MB. Code loaded before anything is shown: desktop 2.4 → 1.4 MB, extension viewer 2.4 → 1.41 MB.
-
 ## Desktop app
 
 ### Cold start to readable content
@@ -112,19 +91,18 @@ Time from launching the exe until the content is on screen. Memory is the privat
 | Diagram library (only for Markdown with Mermaid) | 5.03 MB |
 | Unpacked / zip | 8.5 MB / 0 MB |
 
-## How it got faster
+## Why it is fast
 
-1. **CSV sorting** — each column gets one numeric sort key per row, computed once and cached: numbers are parsed once, ISO dates take a fast path, and text is ranked by sorting only its distinct values with one shared `Intl.Collator`. Rows are then placed with a stable counting sort, so there are no per-comparison callbacks. Before, every comparison re-parsed both cells or called `localeCompare` with options.
-2. **Column statistics** — rows are read in file order (reading a sorted view hopped around memory), numbers are sorted natively in a `Float64Array`, the most common values come from one pass, and results are cached until the filter changes.
-3. **String hashing** — counting distinct values no longer uses cell strings as `Map` keys. In Chromium, once a large file is loaded, the engine hashes millions of fresh substrings about 30× slower the first time (2.4 s instead of 80 ms per million cells), so Braceview hashes them itself.
-4. **Large Markdown** — the sanitizer hands over its DOM instead of an HTML string that was then parsed a second time, and long documents let the browser skip layout for off-screen blocks (`content-visibility: auto`).
-5. **Less code up front** — both apps are split into ES modules, so about 1 MB of code-editor grammars loads only when a code block needs colouring. The extension imports its viewer directly instead of asking the service worker to inject it.
-6. **Still slow: 20 MB JSON in the extension** — most of that time is the browser receiving and laying out the raw text before the viewer takes over.
+1. **CSV sorting** — each column gets one numeric sort key per row, computed once and cached: numbers are parsed once, ISO dates take a fast path, and text is ranked by sorting only its distinct values with one shared `Intl.Collator`. Rows are then placed with a stable counting sort, so there are no per-comparison callbacks.
+2. **Column statistics** — rows are read in file order, numbers are sorted natively in a `Float64Array`, the most common values come from one pass, and results are cached until the filter changes.
+3. **String hashing** — distinct values are counted with a hash computed in JavaScript rather than by using cell strings as `Map` keys. In Chromium, with a large file loaded, the engine hashes millions of fresh substrings about 30× slower the first time.
+4. **Large Markdown** — the sanitizer hands its DOM straight to the page, and long documents let the browser skip layout for off-screen blocks (`content-visibility: auto`).
+5. **Little code up front** — both apps are split into ES modules, so about 1 MB of code-editor grammars loads only when a code block needs colouring.
+6. **Known slow spot: 20 MB JSON in the extension** — most of that time is the browser receiving and laying out the raw text before the viewer takes over.
 
 ## Caveats
 
 - The laptop display was off during the run, so the browser produced no frames: scroll timings cover script + layout, not paint.
 - The extension was measured in Electron's Chromium (same engine as Chrome, same extension code), not in Chrome itself.
 - Cold starts are medians of 5 launches; each interaction was timed once per run, on a freshly launched app.
-- The 1.2.0 baseline ran with less free memory (about 2 GB) and another Braceview window open, so small differences such as launch time partly reflect the machine, not the code. The large CSV and Markdown gains do not.
 - Interaction timings subtract the UI's own input debounce (80 ms stats, 250 ms JSONPath).
