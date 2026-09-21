@@ -273,10 +273,10 @@
           <a class="alt" id="dl-mac-x64" href="https://github.com/viveksthul15/braceview/releases/latest">Intel Mac</a>
         </div>
         <div class="dl">
-          <h3>Chrome and Edge <span class="soon" id="ext-soon">Store listing coming soon</span></h3>
-          <p>Views JSON, CSV and Markdown pages right in the browser.</p>
-          <a class="btn primary" id="dl-chrome" href="https://github.com/viveksthul15/braceview/releases/latest">Download extension</a>
-          <a class="alt" href="#faq-ext">How to install the zip</a>
+          <h3>Chrome and Edge</h3>
+          <p>Views JSON, CSV and Markdown pages right in the browser. Works in Chrome and Edge.</p>
+          <a class="btn primary" id="dl-chrome" href="https://chromewebstore.google.com/detail/ejpmkffnfkodjmaankamjippcodncpgb">Add to Chrome</a>
+          <a class="alt" href="#faq-ext">Install the zip instead</a>
         </div>
       </div>
     </div>
@@ -296,7 +296,8 @@
             <li>Confirm with your password. After that it opens normally.</li></ol></details>
         <details id="faq-default"><summary>How do I open files with Braceview by double-clicking?</summary>
           <p><b>Windows:</b> right-click a .json, .md or .csv file → <b>Open with → Choose another app → Braceview</b> → tick <b>Always</b>. <b>Mac:</b> right-click a file → <b>Get Info → Open with → Braceview → Change All</b>.</p></details>
-        <details id="faq-ext"><summary>How do I install the extension from the zip?</summary>
+        <details id="faq-ext"><summary>How do I install the extension without the Chrome Web Store?</summary>
+          <p>Easiest is the <a href="https://chromewebstore.google.com/detail/ejpmkffnfkodjmaankamjippcodncpgb">Chrome Web Store listing</a>. To load the zip by hand instead:</p>
           <ol><li>Unzip <code>braceview-extension-*.zip</code> to a folder you'll keep.</li>
             <li>Open <code>chrome://extensions</code> (or <code>edge://extensions</code>) and switch on <b>Developer mode</b>.</li>
             <li>Click <b>Load unpacked</b> and choose the folder. For local files, open <b>Details</b> and enable <b>Allow access to file URLs</b>.</li></ol></details>
@@ -321,12 +322,12 @@
 <script>
   // Fill these in once the store listings are live.
   const STORE = {
-    chrome: '',     // e.g. https://chromewebstore.google.com/detail/braceview/<id>
+    chrome: 'https://chromewebstore.google.com/detail/ejpmkffnfkodjmaankamjippcodncpgb',
     microsoft: '',  // e.g. https://apps.microsoft.com/detail/<product-id>
   };
 
   const $ = (id) => document.getElementById(id);
-  if (STORE.chrome) { $('dl-chrome').href = STORE.chrome; $('dl-chrome').textContent = 'Add to Chrome'; $('ext-soon').remove(); }
+  if (STORE.chrome) { $('dl-chrome').href = STORE.chrome; $('dl-chrome').textContent = 'Add to Chrome'; }
   if (STORE.microsoft) { $('dl-msstore').href = STORE.microsoft; $('dl-msstore').hidden = false; }
 
   // Point download buttons straight at the latest release files.

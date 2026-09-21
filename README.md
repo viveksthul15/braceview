@@ -26,7 +26,7 @@ A small, fast, private viewer for the files AI tools and APIs produce.
 | Windows, no install | `Braceview-Portable-<version>.exe` | Runs from anywhere |
 | **macOS (Apple Silicon)** | `Braceview-<version>-mac-arm64.dmg` | M1, M2, M3, M4 |
 | macOS (Intel) | `Braceview-<version>-mac-x64.dmg` | |
-| **Chrome / Edge** | `braceview-extension-<version>.zip` | Store listing coming soon — [install steps](#chrome-and-edge-extension) |
+| **Chrome / Edge** | [Chrome Web Store](https://chromewebstore.google.com/detail/ejpmkffnfkodjmaankamjippcodncpgb) | One click; also works in Edge. The zip in each release is the same extension for manual install |
 
 Get them from the [latest release](https://github.com/viveksthul15/braceview/releases/latest). Each release lists SHA-256 checksums.
 
@@ -41,6 +41,10 @@ Get them from the [latest release](https://github.com/viveksthul15/braceview/rel
 - **macOS:** right-click a file → **Get Info → Open with → Braceview → Change All**.
 
 ### Chrome and Edge extension
+
+Install it from the [Chrome Web Store](https://chromewebstore.google.com/detail/ejpmkffnfkodjmaankamjippcodncpgb) — one click, and updates arrive automatically. It works in Edge too.
+
+To install the zip by hand instead:
 
 1. Unzip `braceview-extension-<version>.zip` to a folder you'll keep.
 2. Open `chrome://extensions` (or `edge://extensions`) and switch on **Developer mode**.
