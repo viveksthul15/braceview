@@ -22,7 +22,8 @@ A small, fast, private viewer for the files AI tools and APIs produce.
 
 | Platform | File | Notes |
 | --- | --- | --- |
-| **Windows 10 / 11** | `Braceview-Setup-<version>.exe` | Adds Braceview to “Open with” for JSON, Markdown and CSV |
+| **Windows 10 / 11** | [Microsoft Store](https://apps.microsoft.com/detail/9PHBG6DD9GPJ) | One click, updates automatically |
+| Windows, installer | `Braceview-Setup-<version>.exe` | Adds Braceview to “Open with” for JSON, Markdown and CSV |
 | Windows, no install | `Braceview-Portable-<version>.exe` | Runs from anywhere |
 | **macOS (Apple Silicon)** | `Braceview-<version>-mac-arm64.dmg` | M1, M2, M3, M4 |
 | macOS (Intel) | `Braceview-<version>-mac-x64.dmg` | |
@@ -32,7 +33,7 @@ Get them from the [latest release](https://github.com/viveksthul15/braceview/rel
 
 ### First launch
 
-- **Windows:** the installer isn't code-signed yet, so SmartScreen may say “Windows protected your PC”. Click **More info → Run anyway**.
+- **Windows:** the [Microsoft Store version](https://apps.microsoft.com/detail/9PHBG6DD9GPJ) installs without any warning. The standalone installer isn't code-signed yet, so SmartScreen may say “Windows protected your PC”. Click **More info → Run anyway**.
 - **macOS:** the app isn't notarized yet. Open it once, click **Done** on the warning, then go to **System Settings → Privacy & Security** and click **Open Anyway**.
 
 ### Open files with a double-click

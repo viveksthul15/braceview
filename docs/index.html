@@ -261,10 +261,10 @@
       <div class="downloads">
         <div class="dl">
           <h3>Windows</h3>
-          <p>Windows 10 and 11. The installer adds Braceview to “Open with” for JSON, Markdown and CSV files.</p>
-          <a class="btn primary" id="dl-win" href="https://github.com/viveksthul15/braceview/releases/latest">Download installer</a>
+          <p>Windows 10 and 11. Get it from the Microsoft Store for automatic updates, or run the installer directly.</p>
+          <a class="btn primary" id="dl-msstore" href="https://apps.microsoft.com/detail/9PHBG6DD9GPJ">Get it from Microsoft Store</a>
+          <a class="alt" id="dl-win" href="https://github.com/viveksthul15/braceview/releases/latest">Download the installer instead</a>
           <a class="alt" id="dl-win-portable" href="https://github.com/viveksthul15/braceview/releases/latest">Portable version (no install)</a>
-          <a class="alt" id="dl-msstore" href="#" hidden>Get it from Microsoft Store</a>
         </div>
         <div class="dl">
           <h3>macOS</h3>
@@ -323,12 +323,12 @@
   // Fill these in once the store listings are live.
   const STORE = {
     chrome: 'https://chromewebstore.google.com/detail/ejpmkffnfkodjmaankamjippcodncpgb',
-    microsoft: '',  // e.g. https://apps.microsoft.com/detail/<product-id>
+    microsoft: 'https://apps.microsoft.com/detail/9PHBG6DD9GPJ',
   };
 
   const $ = (id) => document.getElementById(id);
   if (STORE.chrome) { $('dl-chrome').href = STORE.chrome; $('dl-chrome').textContent = 'Add to Chrome'; }
-  if (STORE.microsoft) { $('dl-msstore').href = STORE.microsoft; $('dl-msstore').hidden = false; }
+  if (STORE.microsoft) $('dl-msstore').href = STORE.microsoft;
 
   // Point download buttons straight at the latest release files.
   fetch('https://api.github.com/repos/viveksthul15/braceview/releases/latest')
