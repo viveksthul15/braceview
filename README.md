@@ -4,7 +4,7 @@
 
 # Braceview
 
-**Read JSON, CSV and Markdown in a click — on Windows, Mac and in Chrome.**
+**Read JSON, CSV, Markdown, logs and config files in a click — on Windows, Mac and in Chrome.**
 
 A small, fast, private viewer for the files AI tools and APIs produce.
 
@@ -23,7 +23,7 @@ A small, fast, private viewer for the files AI tools and APIs produce.
 | Platform | File | Notes |
 | --- | --- | --- |
 | **Windows 10 / 11** | [Microsoft Store](https://apps.microsoft.com/detail/9PHBG6DD9GPJ) | One click, updates automatically |
-| Windows, installer | `Braceview-Setup-<version>.exe` | Adds Braceview to “Open with” for JSON, Markdown and CSV |
+| Windows, installer | `Braceview-Setup-<version>.exe` | Adds Braceview to “Open with” for JSON, Markdown, CSV, text, log and config files |
 | Windows, no install | `Braceview-Portable-<version>.exe` | Runs from anywhere |
 | **macOS (Apple Silicon)** | `Braceview-<version>-mac-arm64.dmg` | M1, M2, M3, M4 |
 | macOS (Intel) | `Braceview-<version>-mac-x64.dmg` | |
@@ -63,6 +63,10 @@ To install the zip by hand instead:
 ![CSV table with column statistics](docs/assets/screen-csv.png)
 
 **Markdown** — diagrams (Mermaid), math, tables, task lists and GitHub alerts rendered properly, with an outline that follows your reading position, split editing, and export to PDF or HTML.
+
+**Text, logs and code** — `.txt`, `.log`, `.env`, `.ini`, `.properties`, `.toml`, `.yaml`, `.xml` and around 45 source-code extensions. Filter a log down to the lines that matter while the gutter keeps the real line numbers, and type `:420` to jump to a line.
+
+**A scratch tab** — `Ctrl+N` opens an empty tab with no file behind it. Paste JSON or CSV in and open it in the full tree or table. Nothing is written to disk.
 
 **In the browser** — API responses open as a searchable tree, raw GitHub `.md` and `.csv` files render instantly, and JSON inside documentation pages gets a **View as tree** button.
 

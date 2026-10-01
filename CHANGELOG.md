@@ -2,6 +2,24 @@
 
 All notable changes to Braceview are documented here. Versions follow semantic versioning.
 
+## [1.3.0] — 2026-10-01
+
+### Added
+
+- **Text, logs, config files and code.** Braceview now opens `.txt`, `.log`, `.env`, `.ini`, `.properties`, `.toml`, `.yaml`, `.xml` and around 45 source-code extensions, with syntax colours loaded only for the language the file actually needs.
+- **Filter a log down to the lines you care about.** Type in the filter box and everything else disappears, while the gutter keeps the real line numbers so you still know where you are. Type `:420` in the same box to jump to a line.
+- **Scratch tab (Ctrl+N).** An empty tab with no file behind it: paste JSON or CSV in and Braceview tells you what it looks like, then one click turns the tab into the full tree or table. Nothing is written to disk.
+- Braceview adds itself to "Open with" for text, log and config files. Code extensions are left alone on purpose — your editor keeps those.
+
+### Changed
+
+- **Wide tables and code blocks now use the whole window.** Long documents keep a comfortable reading width for prose, and anything too wide for it — a six-column table, a long line of code, a diagram — spreads out instead of being squeezed or cut off.
+- Reading width (narrow, normal, full) has its own **Width** button in the toolbar.
+
+### Fixed
+
+- A failure while starting up can no longer look like a silent crash: the window always appears, problems are reported, and a graphics-driver failure retries once without hardware acceleration.
+
 ## [1.2.1] — 2026-09-17
 
 Tuned for big files. Full numbers, method and machine are in [BENCHMARKS.md](https://github.com/viveksthul15/braceview/blob/main/BENCHMARKS.md).
